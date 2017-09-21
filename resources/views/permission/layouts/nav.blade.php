@@ -7,15 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">主页</a>
+                <a class="nav-link" href="{{ url('/') }}">主页</a>
             </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <span class="nav-link">欢迎您：</span>
+                <span class="nav-link">欢迎您：{{ auth()->user()->getName() }}</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">退出登录</a>
+                <a class="nav-link" href="{{ route('logout') }}">退出登录</a>
             </li>
         </ul>
     </div>

@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('permission')->namespace('Permission')->group(function () {
+Route::middleware('guest')->get('login', 'Auth\LoginController@login')->name('login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::middleware('can:website.admin.permission')->prefix('permission')->namespace('Permission')->group(function () {
     Route::get('/', 'IndexController@index');
     Route::prefix('permission')->group(function () {
         Route::get('/', 'PermissionController@index');
