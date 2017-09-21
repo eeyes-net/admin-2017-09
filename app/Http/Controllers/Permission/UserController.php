@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Permission;
 
 use App\Http\Controllers\Controller;
+use App\Library\Eeyes\Api\XjtuUserInfo;
 use App\Model\Eeyes\Permission\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class UserController extends Controller
         $user = new User();
         $user->username = $request->input('username');
         $user->password = '*';
-        $user->name = $request->input('name');
+        $user->name = $request->input('name') ?: XjtuUserInfo::getByNetId($user->username)['username'];
         $user->save();
         $user->roles()->sync(array_values($request->input('roles', [])));
         return back()->with([
@@ -60,7 +61,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->username = $request->input('username');
         $user->password = '*';
-        $user->name = $request->input('name');
+        $user->name = $request->input('name') ?: XjtuUserInfo::getByNetId($user->username)['username'];
         $user->save();
         $roles = array_values($request->input('roles', []));
         $user->roles()->sync($roles);
