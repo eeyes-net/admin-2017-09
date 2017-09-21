@@ -1,0 +1,1 @@
+@extends('permission.layouts.master')
