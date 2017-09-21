@@ -27,7 +27,7 @@
                         <td>
                             <a class="btn btn-outline-primary" href="{{ action('Permission\RoleController@show', ['id' => $item->id]) }}">查看</a>
                             <a class="btn btn-outline-primary" href="{{ action('Permission\RoleController@edit', ['id' => $item->id]) }}">编辑</a>
-                            <a class="btn btn-danger" href="javascript:destory({{ $item->id }});void 0;">删除</a>
+                            <a class="btn btn-danger" href="javascript:destroy({{ $item->id }});void 0;">删除</a>
                             <form class="form-destroy" data-id="{{ $item->id }}" method="POST" action="{{ action('Permission\RoleController@destroy', ['id' => $item->id]) }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}

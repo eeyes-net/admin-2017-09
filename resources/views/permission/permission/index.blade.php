@@ -20,7 +20,7 @@
                         <td>{{ $item->name }}</td>
                         <td>
                             <a class="btn btn-outline-primary" href="{{ action('Permission\PermissionController@edit', ['id' => $item->id]) }}">编辑</a>
-                            <a class="btn btn-danger" href="javascript:destory({{ $item->id }});void 0;">删除</a>
+                            <a class="btn btn-danger" href="javascript:destroy({{ $item->id }});void 0;">删除</a>
                             <form class="form-destroy" data-id="{{ $item->id }}" method="POST" action="{{ action('Permission\PermissionController@destroy', ['id' => $item->id]) }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
