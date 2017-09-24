@@ -16,9 +16,7 @@ class LoginController extends Controller
     public function __construct()
     {
         phpCAS::client(CAS_VERSION_2_0, config('cas.host'), config('cas.port'), config('cas.context'));
-        if (config('app.debug')) {
-            phpCAS::setNoCasServerValidation();
-        }
+        phpCAS::setNoCasServerValidation();
     }
 
     public function login()
