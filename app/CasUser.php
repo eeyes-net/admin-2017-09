@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\Library\Eeyes\Api\Permission;
-use App\Library\Eeyes\Api\XjtuUserInfo;
+use Eeyes\Common\Api\Eeyes\Permission;
+use Eeyes\Common\Api\Xjtu\UserInfo;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
@@ -42,7 +42,7 @@ class CasUser implements Authenticatable, \Serializable
     public function getName()
     {
         if (empty($this->name)) {
-            $this->name = XjtuUserInfo::getByNetId($this->net_id)['username'];
+            $this->name = UserInfo::getByNetId($this->net_id)['username'];
             $this->updateSession();
         }
         return $this->name;
